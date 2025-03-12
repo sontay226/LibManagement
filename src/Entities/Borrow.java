@@ -1,12 +1,13 @@
 package Entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Borrow {
     private String Borrower , BookBorrower;
-    private Date BorrowDate , ReturnExpectDate;
+    private LocalDate BorrowDate , ReturnExpectDate;
 
-    public Borrow(String borrower, String bookBorrower, Date borrowDate, Date returnExpectDate) {
+    public Borrow(String borrower, String bookBorrower, LocalDate borrowDate, LocalDate returnExpectDate) {
         Borrower = borrower;
         BookBorrower = bookBorrower;
         BorrowDate = borrowDate;
@@ -29,19 +30,19 @@ public class Borrow {
         BookBorrower = bookBorrower;
     }
 
-    public Date getBorrowDate() {
+    public LocalDate getBorrowDate() {
         return BorrowDate;
     }
 
-    public void setBorrowDate(Date borrowDate) {
+    public void setBorrowDate(LocalDate borrowDate) {
         BorrowDate = borrowDate;
     }
 
-    public Date getReturnExpectDate() {
+    public LocalDate getReturnExpectDate() {
         return ReturnExpectDate;
     }
 
-    public void setReturnExpectDate(Date returnExpectDate) {
+    public void setReturnExpectDate(LocalDate returnExpectDate) {
         ReturnExpectDate = returnExpectDate;
     }
 }

@@ -4,6 +4,6 @@ import Entities.Book;
 
 public interface IBookRepository {
     boolean AddBook (Book newBook);
-    boolean UpdateBook ( );
+    boolean UpdateBook ( Book newBook );
     boolean DeleteBook ( int id );
 }

@@ -2,6 +2,6 @@ package Repository.Interface;
 
 import Entities.ReturnAndFee;
 
-public interface IReturnAndFee {
+public interface IReturnAndFeeRepository {
     double calLateFee(ReturnAndFee returnAndFee);
 }

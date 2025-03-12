@@ -55,4 +55,5 @@ public class UserRepositoryImpl implements IUserRepository {
         }
         System.out.println("Find end with success!");
     }
+    public List<User> listUser () { return _list;}
 }

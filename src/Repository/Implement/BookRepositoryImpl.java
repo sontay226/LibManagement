@@ -44,4 +44,5 @@ public class BookRepositoryImpl implements IBookRepository {
         }
         return false;
     }
+    public List<Book> bookList() { return _list;}
 }

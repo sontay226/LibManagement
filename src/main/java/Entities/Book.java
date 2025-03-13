@@ -1,54 +1,54 @@
 package Entities;
 
 public class Book {
-    private String Name ,  Author , Genre;
-    private int Id , Quantity;
+    private String name, author, genre;
+    private int id, quantity;
     public Book () {}
     public Book( int Id , int Quantity , String Name , String Author , String Genre) {
-        this.Id = Id;
-        this.Author = Author;
-        this.Name = Name;
-        this.Genre = Genre;
-        this.Quantity = Quantity;
+        this.id = Id;
+        this.author = Author;
+        this.name = Name;
+        this.genre = Genre;
+        this.quantity = Quantity;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        this.author = author;
     }
 
     public String getGenre() {
-        return Genre;
+        return genre;
     }
 
     public void setGenre(String genre) {
-        Genre = genre;
+        this.genre = genre;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public int getQuantity() {
-        return Quantity;
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
-        Quantity = quantity;
+        this.quantity = quantity;
     }
 }

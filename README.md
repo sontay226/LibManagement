@@ -32,25 +32,3 @@ Yêu cầu bổ sung:
     1. Giới hạn số sách mượn: Mỗi người dùng chỉ được mượn tối đa 5 cuốn sách cùng một lúc.
     2. Hạn chế trễ hạn: Một người dùng có thể bị đình chỉ việc mượn sách trong một khoảng thời gian nếu số lần trễ hạn vượt quá giới hạn quy định (ví dụ, quá 3 lần trong một tháng).
 
-Directory Structure
-LibraryManagement
-├─ pom.xml
-└─ src
-   └─ main
-      ├─ java
-      │   ├─ Entities
-      │   │   └─ ...
-      │   ├─ Repository
-      │   │   ├─ Interface
-      │   │   │   └─ ...
-      │   │   └─ Implement
-      │   │       ├─ InMemory
-      │   │       │   └─ ...
-      │   │       └─ SqlImplement
-      │   │           └─ ...
-      │   ├─ Services
-      │   │   └─ ...
-      │   └─ Main.java
-      └─ resources
-          └─ ...
-

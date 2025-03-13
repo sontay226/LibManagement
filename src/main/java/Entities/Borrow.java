@@ -1,48 +1,48 @@
 package Entities;
 
 import java.time.LocalDate;
-import java.util.Date;
-
+import java.util.List;
 public class Borrow {
-    private String Borrower , BookBorrower;
-    private LocalDate BorrowDate , ReturnExpectDate;
+    private User borrower;
+    private List<Book> borrowedBooks;
+    private LocalDate borrowDate;
+    private LocalDate returnExpectedDate;
 
-    public Borrow(String borrower, String bookBorrower, LocalDate borrowDate, LocalDate returnExpectDate) {
-        Borrower = borrower;
-        BookBorrower = bookBorrower;
-        BorrowDate = borrowDate;
-        ReturnExpectDate = returnExpectDate;
+    public Borrow(User borrower, List<Book> borrowedBooks, LocalDate borrowDate, LocalDate returnExpectedDate) {
+        this.borrower = borrower;
+        this.borrowedBooks = borrowedBooks; // Danh sách được truyền từ bên ngoài
+        this.borrowDate = borrowDate;
+        this.returnExpectedDate = returnExpectedDate;
+    }
+    public User getBorrower() {
+        return borrower;
     }
 
-    public String getBorrower() {
-        return Borrower;
+    public void setBorrower(User borrower) {
+        this.borrower = borrower;
     }
 
-    public void setBorrower(String borrower) {
-        Borrower = borrower;
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
     }
 
-    public String getBookBorrower() {
-        return BookBorrower;
-    }
-
-    public void setBookBorrower(String bookBorrower) {
-        BookBorrower = bookBorrower;
+    public void setBorrowedBooks(List<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
     }
 
     public LocalDate getBorrowDate() {
-        return BorrowDate;
+        return borrowDate;
     }
 
     public void setBorrowDate(LocalDate borrowDate) {
-        BorrowDate = borrowDate;
+        this.borrowDate = borrowDate;
     }
 
-    public LocalDate getReturnExpectDate() {
-        return ReturnExpectDate;
+    public LocalDate getReturnExpectedDate() {
+        return returnExpectedDate;
     }
 
-    public void setReturnExpectDate(LocalDate returnExpectDate) {
-        ReturnExpectDate = returnExpectDate;
+    public void setReturnExpectedDate(LocalDate returnExpectedDate) {
+        this.returnExpectedDate = returnExpectedDate;
     }
 }

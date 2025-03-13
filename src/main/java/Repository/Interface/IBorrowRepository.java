@@ -5,4 +5,5 @@ import java.util.List;
 public interface IBorrowRepository {
     List<Book> listBorrow();
     boolean checkIsAvailable ( int bookId);
+    boolean addBorrowBook ( Book book );
 }

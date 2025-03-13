@@ -14,7 +14,6 @@ public class BorrowService {
     }
     public List<Book> listBorrow() { return borrowRepository.listBorrow(); }
     public boolean checkIsAvailable ( int bookId ) {
-        if ( borrowRepository.checkIsAvailable(bookId)) return true;
-        return false;
+        return borrowRepository.checkIsAvailable(bookId);
     }
 }

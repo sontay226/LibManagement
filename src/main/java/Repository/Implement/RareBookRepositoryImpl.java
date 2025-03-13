@@ -3,7 +3,6 @@ package Repository.Implement;
 import Repository.Interface.IBookRepository;
 import Entities.Book;
 import java.util.List;
-import java.util.Optional;
 
 public class RareBookRepositoryImpl implements IBookRepository {
     private double PrivateFee = 100;
@@ -25,8 +24,8 @@ public class RareBookRepositoryImpl implements IBookRepository {
 
     @Override
     public boolean AddBook(Book newBook) {
-        Optional<Book> exists = _list.stream().filter(b -> b.getId() == newBook.getId()).findFirst();
-        if ( exists.isEmpty() ) {
+        boolean exists = _list.stream().anyMatch(b -> b.getId() == newBook.getId());
+        if ( !exists ) {
             _list.add(newBook);
             newBook.setQuantity( RareQuantity );
             return true;

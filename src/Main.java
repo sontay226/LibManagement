@@ -1,16 +1,25 @@
-import Entities.Book;
-import Repository.Implement.BookRepositoryImpl;
-import Repository.Interface.IBookRepository;
+import PostgreSqlConnect.DBConnect;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
 
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Main {
     public static void main ( String[] args ) {
-        List<Book> bookList = new ArrayList<>();
-        IBookRepository bookRepository = new BookRepositoryImpl(bookList);
+        try (Connection conn = DBConnect.getConnection()) {
+            System.out.println("success!");
+            try (Statement stmt = conn.createStatement()) {
+                ResultSet rs = stmt.executeQuery("SELECT 1"); // Truy vấn kiểm tra
+                if (rs.next()) {
+                    int value = rs.getInt(1);
+                    System.out.println("Truy vấn test thành công, giá trị = " + value);
+                }
+            }
+        }catch( SQLException ex) {
+            ex.printStackTrace();
+        }
 
     }
 }

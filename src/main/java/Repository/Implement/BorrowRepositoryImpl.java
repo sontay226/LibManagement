@@ -13,10 +13,12 @@ public class BorrowRepositoryImpl implements IBorrowRepository {
     @Override
     public List<Book> listBorrow() { return _list;}
     @Override
-    public boolean checkIsAvailable ( int bookId ) {
-        boolean check = false;
-        Optional<Book> exists =  bookRepository.bookList().stream().filter(id -> id.getId() == bookId).findFirst();
-        if (exists.isEmpty()) return false;
-        return true;
+    public boolean checkIsAvailable(int bookId) {
+        Optional<Book> exists = bookRepository.bookList()
+                                              .stream()
+                                              .filter(book -> book.getId() == bookId)
+                                              .findFirst();
+        return exists.isPresent();
     }
+
 }

@@ -1,6 +1,6 @@
 package Entities;
 
-import Repository.Implement.TransactionsRepositoryImpl;
+import Repository.Implement.InMemoryImpl.TransactionsRepositoryImpl;
 import java.time.LocalDate;
 public class ReportTransactions {
     private TransactionsRepositoryImpl transactions;

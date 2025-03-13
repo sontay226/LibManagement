@@ -1,4 +1,4 @@
-package Repository.Implement;
+package Repository.Implement.InMemoryImpl;
 
 import Entities.User;
 import Repository.Interface.IUserRepository;

@@ -24,7 +24,7 @@ public class BookRepositoryImpl implements IBookRepository {
             if ( tmp.getId() == newBook.getId()) {
                 tmp.setAuthor(newBook.getAuthor());
                 tmp.setName(newBook.getName());
-                tmp.setType(newBook.getType());
+                tmp.setGenre(newBook.getGenre());
                 tmp.setQuantity(newBook.getQuantity());
                 System.out.println("Update success!");
                 return true;
@@ -39,7 +39,7 @@ public class BookRepositoryImpl implements IBookRepository {
             if ( tmp.getId() == id ) {
                 _list.remove(tmp);
                 System.out.println("Remove success!");
-                return false;
+                return true;
             }
         }
         return false;

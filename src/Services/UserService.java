@@ -5,19 +5,24 @@ import Repository.Interface.IUserRepository;
 
 public class UserService {
     private IUserRepository userRepository;
-    public UserService ( IUserRepository userRepository ) { this.userRepository = userRepository;}
-    public boolean UdpateUser ( User newUser ) {
-        if ( userRepository.UpdateUser(newUser)) return true;
-        return false;
+
+    public UserService(IUserRepository userRepository) {
+        this.userRepository = userRepository;
     }
-    public boolean AddUser ( User newUser ) {
-        if ( userRepository.AddUser(newUser)) return true;
-        return false;
+
+    public boolean updateUser(User newUser) {
+        return userRepository.updateUser(newUser);
     }
-    public void FindUserByName ( String name ) {
-        userRepository.FindUserByName(name);
+
+    public boolean addUser(User newUser) {
+        return userRepository.addUser(newUser);
     }
-    public void FindUserById ( int id ) {
-        userRepository.FindUserById(id);
+
+    public void findUserByName(String name) {
+        userRepository.findUserByName(name);
+    }
+
+    public void findUserById(int id) {
+        userRepository.findUserById(id);
     }
 }

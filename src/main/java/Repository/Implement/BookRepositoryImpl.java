@@ -1,8 +1,11 @@
 package Repository.Implement;
 
 import Entities.Book;
+import Entities.RareBook;
 import Repository.Interface.IBookRepository;
 import java.util.List;
+import java.util.Optional;
+
 public class BookRepositoryImpl implements IBookRepository {
     private List<Book> _list;
     public BookRepositoryImpl ( List<Book> list) {_list = list;}
@@ -14,8 +17,13 @@ public class BookRepositoryImpl implements IBookRepository {
                 return false;
             }
         }
-        _list.add(newBook);
-        return true;
+        if ( newBook instanceof RareBook ) {
+            if ( newBook.getQuantity() > 10 ) {
+                System.out.println("RareBook cannot greater than 10!");
+                return false;
+            }
+        }
+        return _list.add(newBook);
     }
 
     @Override
@@ -43,6 +51,10 @@ public class BookRepositoryImpl implements IBookRepository {
             }
         }
         return false;
+    }
+    @Override
+    public Book getBookById ( int id ) {
+        return _list.stream().filter(book -> book.getId() == id).findFirst().orElse(null);
     }
     public List<Book> bookList() { return _list;}
 }

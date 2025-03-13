@@ -9,7 +9,7 @@ public class UserRepositoryImpl implements IUserRepository {
     private List<User> _list;
     public UserRepositoryImpl ( List<User> list ) { _list = list;}
     @Override
-    public boolean UpdateUser(User newUser) {
+    public boolean updateUser(User newUser) {
         for ( User tmp : _list ) {
             if ( tmp.getId() == newUser.getId() ) {
                 tmp.setName(newUser.getName());
@@ -23,37 +23,36 @@ public class UserRepositoryImpl implements IUserRepository {
     }
 
     @Override
-    public boolean AddUser(User newUser) {
+    public boolean addUser(User newUser) {
         for ( User tmp : _list ) {
             if ( tmp.getId() == newUser.getId() ) {
                 System.out.println("This ID already added!");
                 return false;
             }
         }
-        _list.add(newUser);
-        return true;
+        return _list.add(newUser);
     }
 
     @Override
-    public void FindUserByName(String name) {
+    public void findUserByName(String name) {
         for ( User tmp : _list ) {
-            if ( tmp.getName() == name ) {
-                tmp.toString();
+            if ( tmp.getName().equals(name) ) {
+                System.out.println(tmp);
                 return;
             }
         }
-        System.out.println("Find end with success!");
+        System.out.println("User not found by name : " + name);
     }
 
     @Override
-    public void FindUserById( int id) {
+    public void findUserById( int id) {
         for ( User tmp : _list ) {
             if ( tmp.getId() == id ) {
-                tmp.toString();
+                System.out.println(tmp);
                 return;
             }
         }
-        System.out.println("Find end with success!");
+        System.out.println("User not found by id : " + id );
     }
     public List<User> listUser () { return _list;}
 }

@@ -10,7 +10,7 @@ public class ReturnAndFeeRepositoryRepoImpl implements IReturnAndFeeRepository {
     private Borrow borrow;
     @Override
     public double calLateFee (ReturnAndFee returnAndFee) {
-        long days = ChronoUnit.DAYS.between( borrow.getReturnExpectDate() , returnAndFee.getReturnDate());
+        long days = ChronoUnit.DAYS.between( borrow.getReturnExpectedDate() , returnAndFee.getReturnDate());
         if ( days > 0 ) {
             return days * returnAndFee.getLateFeePerDay();
         }

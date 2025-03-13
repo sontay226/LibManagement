@@ -1,8 +1,8 @@
 package Repository.Interface;
 import Entities.User;
 public interface IUserRepository {
-    boolean UpdateUser ( User newUser );
-    boolean AddUser ( User newUser );
-    void FindUserByName ( String name );
-    void FindUserById ( int id);
+    boolean updateUser ( User newUser );
+    boolean addUser ( User newUser );
+    void findUserByName ( String name );
+    void findUserById ( int id);
 }

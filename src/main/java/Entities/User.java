@@ -1,55 +1,55 @@
 package Entities;
 
 public class User {
-    private String Name , Address , PhoneNumber;
-    private int Id;
+    private String name, address, phoneNumber;
+    private int id;
 
     public User(String name, String address, String phoneNumber, int id) {
-        Name = name;
-        Address = address;
-        PhoneNumber = phoneNumber;
-        Id = id;
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     @Override
     public String toString() {
         return "User{" +
-               "Name='" + Name + '\'' +
-               ", Address='" + Address + '\'' +
-               ", PhoneNumber='" + PhoneNumber + '\'' +
-               ", Id=" + Id +
+               "Name='" + name + '\'' +
+               ", Address='" + address + '\'' +
+               ", PhoneNumber='" + phoneNumber + '\'' +
+               ", Id=" + id +
                '}';
     }
 }

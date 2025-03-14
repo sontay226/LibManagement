@@ -10,8 +10,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public boolean updateUser(User newUser) {
-        return userRepository.updateUser(newUser);
+    public boolean updateUser(int id , String name , String address , String phoneNumber) {
+        return userRepository.updateUser(id , name , address , phoneNumber);
     }
 
     public boolean addUser(User newUser) {

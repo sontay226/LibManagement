@@ -7,15 +7,12 @@ public class BookService {
     private IBookRepository bookRepository;
     public BookService ( IBookRepository bookRepository ) { this.bookRepository = bookRepository;}
     public boolean AddBook( Book newBook) {
-        if (bookRepository.AddBook(newBook)) return true;
-        return false;
+        return bookRepository.AddBook(newBook);
     }
-    public boolean UpdateBook ( Book newBook ) {
-        if (bookRepository.UpdateBook(newBook)) return true;
-        return false;
+    public boolean UpdateBook ( int id , String name , String author , String genre, int quantity  ) {
+        return bookRepository.UpdateBook(id  , name , author , genre, quantity);
     }
     public boolean DeleteBook ( int id ) {
-        if(bookRepository.DeleteBook(id)) return true;
-        return false;
+        return bookRepository.DeleteBook(id);
     }
  }

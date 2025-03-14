@@ -4,7 +4,7 @@ public class Book {
     private String name, author, genre;
     private int id, quantity;
     public Book () {}
-    public Book( int Id , int Quantity , String Name , String Author , String Genre) {
+    public Book( int Id  , String Name , String Author , String Genre, int Quantity) {
         this.id = Id;
         this.author = Author;
         this.name = Name;

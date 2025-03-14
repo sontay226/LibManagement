@@ -26,13 +26,13 @@ public class BookRepositoryImpl implements IBookRepository {
     }
 
     @Override
-    public boolean UpdateBook(Book newBook) {
+    public boolean UpdateBook(int id , String name , String author , String genre , int quantity ) {
         for ( Book tmp : _list ) {
-            if ( tmp.getId() == newBook.getId()) {
-                tmp.setAuthor(newBook.getAuthor());
-                tmp.setName(newBook.getName());
-                tmp.setGenre(newBook.getGenre());
-                tmp.setQuantity(newBook.getQuantity());
+            if ( tmp.getId() == id) {
+                tmp.setAuthor(author);
+                tmp.setName(name);
+                tmp.setGenre(genre);
+                tmp.setQuantity(quantity);
                 System.out.println("Update success!");
                 return true;
             }

@@ -9,12 +9,12 @@ public class UserRepositoryImpl implements IUserRepository {
     private List<User> _list;
     public UserRepositoryImpl ( List<User> list ) { _list = list;}
     @Override
-    public boolean updateUser(User newUser) {
+    public boolean updateUser(int id , String name , String address , String phoneNumber ) {
         for ( User tmp : _list ) {
-            if ( tmp.getId() == newUser.getId() ) {
-                tmp.setName(newUser.getName());
-                tmp.setAddress(newUser.getAddress());
-                tmp.setPhoneNumber(newUser.getPhoneNumber());
+            if ( tmp.getId() == id ) {
+                tmp.setName(name);
+                tmp.setAddress(address);
+                tmp.setPhoneNumber(phoneNumber);
                 System.out.println("Update User success!");
                 return true;
             }

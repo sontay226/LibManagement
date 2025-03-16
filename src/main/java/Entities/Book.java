@@ -11,6 +11,12 @@ public class Book {
         this.genre = Genre;
         this.quantity = Quantity;
     }
+    public Book ( int Id , String Name , String Author , String Genre) {
+        this.id = Id;
+        this.name = Name;
+        this.author =Author;
+        this.genre = Genre;
+    }
 
     public String getName() {
         return name;

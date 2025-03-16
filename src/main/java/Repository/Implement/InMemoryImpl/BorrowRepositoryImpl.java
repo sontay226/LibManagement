@@ -1,6 +1,7 @@
 package Repository.Implement.InMemoryImpl;
 
 import Entities.Book;
+import Entities.Borrow;
 import Repository.Interface.IBorrowRepository;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +9,7 @@ import java.util.Optional;
 public class BorrowRepositoryImpl implements IBorrowRepository {
     private List<Book> borrowedBooks;
     private BookRepositoryImpl bookRepository;
+    private List<Borrow> borrowList;
 
     public BorrowRepositoryImpl(List<Book> borrowedBooks, BookRepositoryImpl bookRepository) {
         this.borrowedBooks = borrowedBooks;
@@ -15,7 +17,12 @@ public class BorrowRepositoryImpl implements IBorrowRepository {
     }
 
     @Override
-    public List<Book> listBorrow() {
+    public List<Borrow> listBorrow() {
+        return borrowList;
+    }
+
+    @Override
+    public List<Book> listBorrowBooks() {
         return borrowedBooks;
     }
 
@@ -30,7 +37,7 @@ public class BorrowRepositoryImpl implements IBorrowRepository {
     }
 
     @Override
-    public boolean addBorrowBook(Book book) {
+    public boolean addBorrowBook(Book book , int userId) {
         boolean exists = borrowedBooks.stream().anyMatch(b -> b.getId() == book.getId());
         if (!exists) {
             borrowedBooks.add(book);

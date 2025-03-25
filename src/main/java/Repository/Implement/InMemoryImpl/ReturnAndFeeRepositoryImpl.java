@@ -6,7 +6,7 @@ import Repository.Interface.IReturnAndFeeRepository;
 
 import java.time.temporal.ChronoUnit;
 
-public class ReturnAndFeeRepositoryRepoImpl implements IReturnAndFeeRepository {
+public class ReturnAndFeeRepositoryImpl implements IReturnAndFeeRepository {
     private Borrow borrow;
     @Override
     public double calLateFee (ReturnAndFee returnAndFee) {

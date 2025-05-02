@@ -4,11 +4,14 @@ import java.time.LocalDate;
 import java.util.List;
 public class Borrow {
     private User borrower;
+    private Integer id;
     private List<Book> borrowedBooks;
     private LocalDate borrowDate;
     private LocalDate returnExpectedDate;
 
-    public Borrow(User borrower, List<Book> borrowedBooks, LocalDate borrowDate, LocalDate returnExpectedDate) {
+    public Borrow( Integer id , User borrower, List<Book> borrowedBooks, LocalDate borrowDate,
+                   LocalDate returnExpectedDate) {
+        this.id = id;
         this.borrower = borrower;
         this.borrowedBooks = borrowedBooks; // Danh sách được truyền từ bên ngoài
         this.borrowDate = borrowDate;
@@ -17,6 +20,9 @@ public class Borrow {
     public User getBorrower() {
         return borrower;
     }
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 
     public void setBorrower(User borrower) {
         this.borrower = borrower;

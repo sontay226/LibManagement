@@ -4,9 +4,6 @@ import Entities.Borrow;
 
 import java.util.List;
 
-public interface IBorrowRepository {
-    List<Borrow> listBorrow();
-    List<Book> listBorrowBooks();
+public interface IBorrowRepository extends GenericRepository< Borrow , Integer> {
     boolean checkIsAvailable ( int bookId);
-    boolean addBorrowBook ( Book book , int userId );
 }

@@ -2,48 +2,45 @@ package Repository.Implement.InMemoryImpl;
 
 import Entities.Book;
 import Entities.Borrow;
+import Repository.Interface.IBookRepository;
 import Repository.Interface.IBorrowRepository;
-import java.util.List;
-import java.util.Optional;
+
+import java.time.LocalDate;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BorrowRepositoryImpl implements IBorrowRepository {
-    private List<Book> borrowedBooks;
-    private BookRepositoryImpl bookRepository;
-    private List<Borrow> borrowList;
+    private final Map<Integer , Borrow> _borrowsList = new HashMap<>();
+    private final IBookRepository bookRepository;
 
-    public BorrowRepositoryImpl(List<Book> borrowedBooks, BookRepositoryImpl bookRepository) {
-        this.borrowedBooks = borrowedBooks;
+    public BorrowRepositoryImpl(Map<Integer , Borrow> borrowsList, BookRepositoryImpl bookRepository) {
+        if ( borrowsList != null ) _borrowsList.putAll(borrowsList);
         this.bookRepository = bookRepository;
     }
 
+
     @Override
-    public List<Borrow> listBorrow() {
-        return borrowList;
+    public Borrow save ( Borrow newBorrow) {
+        return _borrowsList.put(newBorrow.getId(),  newBorrow);
     }
 
     @Override
-    public List<Book> listBorrowBooks() {
-        return borrowedBooks;
+    public List<Borrow> findAll() {
+        return new ArrayList<>(_borrowsList.values());
+    }
+
+    @Override
+    public Optional<Borrow> findById(Integer userId) {
+        return _borrowsList.values().stream().filter(b -> b.getBorrower().getId() == userId).findFirst();
     }
 
     @Override
     public boolean checkIsAvailable(int bookId) {
-        // Giả sử kiểm tra từ danh sách của bookRepository
-        Optional<Book> exists = bookRepository.bookList()
-                                              .stream()
-                                              .filter(book -> book.getId() == bookId)
-                                              .findFirst();
-        return exists.isPresent();
+        return bookRepository.findById(bookId).isPresent();
     }
-
     @Override
-    public boolean addBorrowBook(Book book , int userId) {
-        boolean exists = borrowedBooks.stream().anyMatch(b -> b.getId() == book.getId());
-        if (!exists) {
-            borrowedBooks.add(book);
-            return true;
-        }
-        return false;
+    public void deleteById ( Integer id ) {
+        if ( !_borrowsList.containsKey(id) ) throw new NoSuchElementException("Borrow w id " + id + " is not exits!");
+        _borrowsList.remove(id);
     }
-
 }

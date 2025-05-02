@@ -15,4 +15,5 @@ public class BookService {
     public boolean DeleteBook ( int id ) {
         return bookRepository.DeleteBook(id);
     }
+    public Book getBookById ( int id ) { return bookRepository.getBookById(id);}
  }

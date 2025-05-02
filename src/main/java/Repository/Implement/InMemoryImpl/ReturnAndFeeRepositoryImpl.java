@@ -14,6 +14,9 @@ public class ReturnAndFeeRepositoryImpl implements IReturnAndFeeRepository {
         if ( days > 0 ) {
             return days * returnAndFee.getLateFeePerDay();
         }
+        if ( borrow.getReturnExpectedDate().isBefore(returnAndFee.getReturnDate()) || borrow.getReturnExpectedDate().isEqual(returnAndFee.getReturnDate())) {
+            return returnAndFee.getFeePerDay()*days;
+        }
         return 0;
     }
 }

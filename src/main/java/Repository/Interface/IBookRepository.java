@@ -1,10 +1,9 @@
 package Repository.Interface;
 
 import Entities.Book;
+import java.util.List;
 
-public interface IBookRepository {
-    boolean AddBook (Book newBook);
-    boolean UpdateBook ( int id  , String name , String author , String genre , int quantity);
-    boolean DeleteBook ( int id );
-    Book getBookById(int id);
+public interface IBookRepository extends GenericRepository<Book , Integer> {
+    List<Book> findByAuthor(String author);
+    List<Book> findByKeyword ( String keyword);
 }

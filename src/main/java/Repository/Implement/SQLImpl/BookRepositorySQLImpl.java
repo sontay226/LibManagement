@@ -1,4 +1,4 @@
-package Repository.Implement.SQLImplement;
+package Repository.Implement.SQLImpl;
 
 import Entities.Book;
 import PostgreSqlConnect.DBConnect;

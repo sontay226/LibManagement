@@ -1,4 +1,4 @@
-package Repository.Implement.SQLImplement;
+package Repository.Implement.SQLImpl;
 
 import Entities.Book;
 import Entities.Borrow;
@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 
 public class BorrowRepositorySQLImpl implements IBorrowRepository {

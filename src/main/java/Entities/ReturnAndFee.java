@@ -3,14 +3,15 @@ package Entities;
 import java.time.LocalDate;
 
 public class ReturnAndFee {
-    private double LateFeePerDay , ReturnLateFee;
+    private double LateFeePerDay , ReturnLateFee , FeePerDay;
     private LocalDate ReturnDate;
-
-
-    public ReturnAndFee(double lateFeePerDay, double returnLateFee, LocalDate returnDate) {
+    private int UserId;
+    public ReturnAndFee( int userId , double lateFeePerDay, double returnLateFee, LocalDate returnDate , double feePerDay) {
         LateFeePerDay = lateFeePerDay;
         ReturnLateFee = returnLateFee;
         ReturnDate = returnDate;
+        UserId = userId;
+        FeePerDay = feePerDay;
     }
 
     public double getLateFeePerDay() {
@@ -35,5 +36,21 @@ public class ReturnAndFee {
 
     public void setReturnDate(LocalDate returnDate) {
         ReturnDate = returnDate;
+    }
+
+    public int getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(int userId) {
+        UserId = userId;
+    }
+
+    public double getFeePerDay() {
+        return FeePerDay;
+    }
+
+    public void setFeePerDay(double feePerDay) {
+        FeePerDay = feePerDay;
     }
 }

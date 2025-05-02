@@ -3,56 +3,36 @@ package Repository.Implement.InMemoryImpl;
 import Entities.User;
 import Repository.Interface.IUserRepository;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserRepositoryImpl implements IUserRepository {
-    private List<User> _list;
-    public UserRepositoryImpl ( List<User> list ) { _list = list;}
+    private final Map<Integer , User> _userList = new HashMap<>();
+    public UserRepositoryImpl ( Map<Integer,User> userList ) { if ( userList != null ) _userList.putAll(userList);}
+
     @Override
-    public boolean updateUser(int id , String name , String address , String phoneNumber ) {
-        for ( User tmp : _list ) {
-            if ( tmp.getId() == id ) {
-                tmp.setName(name);
-                tmp.setAddress(address);
-                tmp.setPhoneNumber(phoneNumber);
-                System.out.println("Update User success!");
-                return true;
-            }
-        }
-        return false;
+    public List<User> findUserByName(String name) {
+        return _userList.values().stream().filter( u -> u.getName().contains(name)).collect(Collectors.toList());
     }
 
     @Override
-    public boolean addUser(User newUser) {
-        for ( User tmp : _list ) {
-            if ( tmp.getId() == newUser.getId() ) {
-                System.out.println("This ID already added!");
-                return false;
-            }
-        }
-        return _list.add(newUser);
+    public Optional<User> findById(Integer id) {
+        return _userList.values().stream().filter( u -> u.getId() == id).findFirst();
     }
 
     @Override
-    public void findUserByName(String name) {
-        for ( User tmp : _list ) {
-            if ( tmp.getName().equals(name) ) {
-                System.out.println(tmp);
-                return;
-            }
-        }
-        System.out.println("User not found by name : " + name);
+    public List<User> findAll() {
+        return new ArrayList<>(_userList.values());
     }
 
     @Override
-    public void findUserById( int id) {
-        for ( User tmp : _list ) {
-            if ( tmp.getId() == id ) {
-                System.out.println(tmp);
-                return;
-            }
-        }
-        System.out.println("User not found by id : " + id );
+    public User save(User newUser) {
+        return _userList.put( newUser.getId() , newUser);
     }
-    public List<User> listUser () { return _list;}
+
+    @Override
+    public void deleteById(Integer id ) {
+        if ( !_userList.containsKey(id)) throw new NoSuchElementException("This User Id : " + id + " is not exist!");
+        _userList.remove(id);
+    }
 }

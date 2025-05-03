@@ -1,12 +1,11 @@
 package Entities;
 
-import Repository.Implement.InMemoryImpl.TransactionsRepositoryImpl;
-import Repository.Interface.ITransactions;
+import Repository.Interface.ITransactionRepository;
 
 import java.time.LocalDate;
 public class ReportTransactions {
-    private ITransactions transactions;
-    public ReportTransactions ( ITransactions transactions ) { this.transactions = transactions; }
+    private ITransactionRepository transactions;
+    public ReportTransactions( ITransactionRepository transactions) { this.transactions = transactions; }
     public void printBorrowedBooksReport () {
         System.out.println("Report for borrowed books : ");
         for ( Transactions transaction : transactions.getTransactionsList() ) {

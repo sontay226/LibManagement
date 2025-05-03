@@ -1,13 +1,13 @@
 package Repository.Implement.InMemoryImpl;
 
 import Entities.Transactions;
-import Repository.Interface.ITransactions;
+import Repository.Interface.ITransactionRepository;
 
 import java.util.List;
 
-public class TransactionsRepositoryImpl implements ITransactions {
+public class TransactionRepositoryRepositoryImpl implements ITransactionRepository {
     private List<Transactions> transactionsList;
-    public TransactionsRepositoryImpl(List<Transactions> transactionsList) { this.transactionsList =  transactionsList;}
+    public TransactionRepositoryRepositoryImpl(List<Transactions> transactionsList) { this.transactionsList =  transactionsList;}
     @Override
     public boolean addTransaction(Transactions transactions) {
         return transactionsList.add(transactions);

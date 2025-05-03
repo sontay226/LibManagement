@@ -43,8 +43,8 @@ public class BookRepositoryImpl implements IBookRepository {
     public List<Book> findByKeyword ( String keyword ) {
         String ans = keyword.toLowerCase();
         return _bookList.values().stream().filter( b -> b.getName().toLowerCase().contains(ans)
-                                                        || b.getAuthor().toLowerCase().contains(keyword)
-                                                        || b.getGenre().toLowerCase().contains(keyword))
+                                                        || b.getAuthor().toLowerCase().contains(ans)
+                                                        || b.getGenre().toLowerCase().contains(ans))
                 .collect(Collectors.toList());
     }
 }

@@ -18,10 +18,14 @@ public class BorrowRepositoryImpl implements IBorrowRepository {
         this.bookRepository = bookRepository;
     }
 
-
     @Override
     public Borrow save ( Borrow newBorrow) {
-        return _borrowsList.put(newBorrow.getId(),  newBorrow);
+        if (newBorrow.getId() == null) {
+            int newId = _borrowsList.keySet().stream().mapToInt(i->i).max().orElse(0) + 1;
+            newBorrow.setId(newId);
+        }
+        _borrowsList.put(newBorrow.getId(), newBorrow);
+        return newBorrow;
     }
 
     @Override
@@ -30,13 +34,29 @@ public class BorrowRepositoryImpl implements IBorrowRepository {
     }
 
     @Override
-    public Optional<Borrow> findById(Integer userId) {
-        return _borrowsList.values().stream().filter(b -> b.getBorrower().getId() == userId).findFirst();
+    public Optional<Borrow> findById(Integer id) {
+        return Optional.ofNullable(_borrowsList.get(id));
+    }
+    @Override
+    public List<Borrow> findByUserId(int userId) {
+        return _borrowsList.values().stream()
+                .filter(b -> b.getBorrower().getId() == userId)
+                .collect(Collectors.toList());
     }
 
     @Override
     public boolean checkIsAvailable(int bookId) {
-        return bookRepository.findById(bookId).isPresent();
+        Optional<Book> optionalBook = bookRepository.findById(bookId);
+        if (!optionalBook.isPresent()) return false;
+
+        Book book = optionalBook.get();
+        int totalQuantity = book.getQuantity();
+
+        long borrowedCount = _borrowsList.values().stream()
+                .flatMap(b -> b.getBorrowedBooks().stream())
+                .filter(b -> b.getId() == bookId)
+                .count();
+        return totalQuantity > borrowedCount;
     }
     @Override
     public void deleteById ( Integer id ) {

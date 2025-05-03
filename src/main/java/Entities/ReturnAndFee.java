@@ -1,17 +1,19 @@
 package Entities;
 
 import java.time.LocalDate;
-
+import java.util.List;
 public class ReturnAndFee {
     private double LateFeePerDay , ReturnLateFee , FeePerDay;
     private LocalDate ReturnDate;
     private int UserId;
-    public ReturnAndFee( int userId , double lateFeePerDay, double returnLateFee, LocalDate returnDate , double feePerDay) {
+    private List<Book> returnedBookIds;
+    public ReturnAndFee( List<Book> returnedBookIds , int userId , double lateFeePerDay, double returnLateFee, LocalDate returnDate , double feePerDay) {
         LateFeePerDay = lateFeePerDay;
         ReturnLateFee = returnLateFee;
         ReturnDate = returnDate;
         UserId = userId;
         FeePerDay = feePerDay;
+        this.returnedBookIds = returnedBookIds;
     }
 
     public double getLateFeePerDay() {

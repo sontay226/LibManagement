@@ -2,18 +2,32 @@ package Services;
 
 import Entities.Book;
 import Repository.Interface.IBookRepository;
-
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import exception.BookNotFoundException;
 public class BookService {
-    private IBookRepository bookRepository;
+    private final IBookRepository bookRepository;
     public BookService ( IBookRepository bookRepository ) { this.bookRepository = bookRepository;}
-    public boolean AddBook( Book newBook) {
-        return bookRepository.AddBook(newBook);
+    public Book save ( Book newBook ) {
+        if ( newBook == null ) throw new IllegalArgumentException("newBook can't null!");
+        return bookRepository.save(newBook);
     }
-    public boolean UpdateBook ( int id , String name , String author , String genre, int quantity  ) {
-        return bookRepository.UpdateBook(id  , name , author , genre, quantity);
+    public void deleteById ( Integer id ) {
+        Optional<Book> book = bookRepository.findById(id);
+        if ( !book.isPresent() ) throw new BookNotFoundException(id);
+        bookRepository.deleteById(id);
     }
-    public boolean DeleteBook ( int id ) {
-        return bookRepository.DeleteBook(id);
+    public List<Book> findAll() { return bookRepository.findAll(); }
+    public Optional<Book> findById ( Integer id ) {
+        return bookRepository.findById(id);
     }
-    public Book getBookById ( int id ) { return bookRepository.getBookById(id);}
- }
+    public List<Book> findByAuthor ( String author ) {
+        if (author == null || author.trim().isEmpty()) throw new IllegalArgumentException("Author must not be null or empty");
+        return bookRepository.findByAuthor(author);
+    }
+    public List<Book> findByKeyword ( String keyword ) {
+        if (keyword == null || keyword.trim().isEmpty()) throw new IllegalArgumentException("Keyword must not be null or empty");
+        return bookRepository.findByKeyword(keyword);
+    }
+}

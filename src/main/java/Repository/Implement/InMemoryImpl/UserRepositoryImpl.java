@@ -17,7 +17,7 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Override
     public Optional<User> findById(Integer id) {
-        return _userList.values().stream().filter( u -> u.getId() == id).findFirst();
+        return Optional.ofNullable(_userList.get(id));
     }
 
     @Override
@@ -27,7 +27,8 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Override
     public User save(User newUser) {
-        return _userList.put( newUser.getId() , newUser);
+        _userList.put( newUser.getId() , newUser);
+        return newUser;
     }
 
     @Override

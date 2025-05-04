@@ -55,4 +55,16 @@ public class ReturnAndFee {
     public void setFeePerDay(double feePerDay) {
         FeePerDay = feePerDay;
     }
+
+    @Override
+    public String toString() {
+        return "ReturnAndFee{" +
+               "LateFeePerDay=" + LateFeePerDay +
+               ", ReturnLateFee=" + ReturnLateFee +
+               ", FeePerDay=" + FeePerDay +
+               ", ReturnDate=" + ReturnDate +
+               ", UserId=" + UserId +
+               ", returnedBookIds=" + returnedBookIds +
+               '}';
+    }
 }

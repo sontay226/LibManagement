@@ -51,4 +51,15 @@ public class Borrow {
     public void setReturnExpectedDate(LocalDate returnExpectedDate) {
         this.returnExpectedDate = returnExpectedDate;
     }
+
+    @Override
+    public String toString() {
+        return "Borrow{" +
+               "borrower=" + borrower +
+               ", id=" + id +
+               ", borrowedBooks=" + borrowedBooks +
+               ", borrowDate=" + borrowDate +
+               ", returnExpectedDate=" + returnExpectedDate +
+               '}';
+    }
 }

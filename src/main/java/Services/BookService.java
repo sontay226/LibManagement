@@ -20,6 +20,7 @@ public class BookService {
     }
     public List<Book> findAll() { return bookRepository.findAll(); }
     public Optional<Book> findById ( Integer id ) {
+        if ( id == null || id <= 0 ) throw new IllegalArgumentException("id is null or less than 0");
         return bookRepository.findById(id);
     }
     public List<Book> findByAuthor ( String author ) {

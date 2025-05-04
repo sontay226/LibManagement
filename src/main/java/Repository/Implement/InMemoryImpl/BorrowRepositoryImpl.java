@@ -13,7 +13,7 @@ public class BorrowRepositoryImpl implements IBorrowRepository {
     private final Map<Integer , Borrow> _borrowsList = new HashMap<>();
     private final IBookRepository bookRepository;
 
-    public BorrowRepositoryImpl(Map<Integer , Borrow> borrowsList, BookRepositoryImpl bookRepository) {
+    public BorrowRepositoryImpl(Map<Integer , Borrow> borrowsList, IBookRepository bookRepository) {
         if ( borrowsList != null ) _borrowsList.putAll(borrowsList);
         this.bookRepository = bookRepository;
     }

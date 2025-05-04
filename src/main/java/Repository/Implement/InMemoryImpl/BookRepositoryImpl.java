@@ -36,8 +36,7 @@ public class BookRepositoryImpl implements IBookRepository {
     }
     @Override
     public List<Book> findByAuthor( String author ) {
-        return _bookList.values().stream().filter( b -> b.getAuthor().equalsIgnoreCase(author))
-                .collect(Collectors.toList());
+        return _bookList.values().stream().filter( b -> b.getAuthor().equalsIgnoreCase(author)).collect(Collectors.toList());
     }
     @Override
     public List<Book> findByKeyword ( String keyword ) {

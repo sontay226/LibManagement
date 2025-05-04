@@ -2,7 +2,7 @@ package Entities;
 
 public class RareBook extends  Book{
     private double borrowFee;
-    public RareBook ( int id , int quantity , String name , String author , String genre , double borrowFee) {
+    public RareBook ( int id  , String name , String author , String genre, int quantity , double borrowFee) {
         super(id , name , author , genre, quantity );
         if ( quantity > 10 ) { throw  new IllegalArgumentException("Rare Book quantity cannot greater than 10!"); }
         this.borrowFee =  borrowFee;
